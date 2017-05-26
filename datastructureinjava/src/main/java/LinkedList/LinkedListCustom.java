@@ -5,6 +5,7 @@ package LinkedList;
  */
 public class LinkedListCustom<T extends Comparable<T>> implements ListCustom<T> {
 
+    //dans les linkedList on es capable d'acceder au noeud racine
     private Node<T> root;
     private int sizeOfList;
 
@@ -15,7 +16,7 @@ public class LinkedListCustom<T extends Comparable<T>> implements ListCustom<T> 
         if (root == null) {
             this.root = new Node<>(data);
         } else {
-            insertDataAtBeginnig(data);
+            insertDataAtBeginnig(data); // llinkedList efficace pour insertion au de but de la liste
         }
     }
 
@@ -39,8 +40,16 @@ public class LinkedListCustom<T extends Comparable<T>> implements ListCustom<T> 
     public void remove(T data) {
         if (this.root == null) return;
         -- this.sizeOfList;
+        if(this.root.getData().compareTo(data)==0){
+            this.root = this.root.getNextNode();
+        } else {
+            remove(data, root,root.getNextNode());
+        }
     }
 
+    private void remove(T data , Node<T> previousNode, Node<T> actualNode){
+
+    }
     @Override
     public void traverselist() {
 
