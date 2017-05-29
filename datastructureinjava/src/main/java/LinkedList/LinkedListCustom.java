@@ -39,24 +39,40 @@ public class LinkedListCustom<T extends Comparable<T>> implements ListCustom<T> 
     @Override
     public void remove(T data) {
         if (this.root == null) return;
-        -- this.sizeOfList;
-        if(this.root.getData().compareTo(data)==0){
+        --this.sizeOfList;
+        if (this.root.getData().compareTo(data) == 0) {
             this.root = this.root.getNextNode();
         } else {
-            remove(data, root,root.getNextNode());
+            remove(data, root, root.getNextNode());
         }
     }
 
-    private void remove(T data , Node<T> previousNode, Node<T> actualNode){
+    private void remove(T dataToRemove, Node<T> previousNode, Node<T> actualNode) {
 
+        while (actualNode != null) {
+            if (actualNode.getData().compareTo(dataToRemove) == 0) {
+                previousNode.setNextNode(actualNode.getNextNode());
+                actualNode = null;
+                return;
+            }
+            previousNode = actualNode;
+            actualNode = actualNode.getNextNode();
+        }
     }
+
     @Override
     public void traverselist() {
-
+        if (this.root == null) return;
+        Node<T> actualNode = this.root;
+        while (actualNode != null) {
+            System.out.print(actualNode + " -> ");
+            actualNode = actualNode.getNextNode();
+        }
     }
 
     @Override
     public int size() {
-        return 0;
+        return this.sizeOfList;
+
     }
 }
