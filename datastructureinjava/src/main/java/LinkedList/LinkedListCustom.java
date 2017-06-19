@@ -16,7 +16,7 @@ public class LinkedListCustom<T extends Comparable<T>> implements ListCustom<T> 
         if (root == null) {
             this.root = new Node<>(data);
         } else {
-            insertDataAtBeginnig(data); // llinkedList efficace pour insertion au de but de la liste
+            insertDataAtBeginnig(data); // linkedList efficace pour insertion au de but de la liste
         }
     }
 
