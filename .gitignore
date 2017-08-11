@@ -3,4 +3,7 @@
 build
 .gradle
 gradle
+out/
 
+
+*.class
